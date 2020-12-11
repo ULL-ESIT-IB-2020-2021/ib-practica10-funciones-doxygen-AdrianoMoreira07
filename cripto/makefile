@@ -4,14 +4,14 @@
 # Asignatura: Informática Básica
 # 
 # @author Adriano dos Santos Moreira <alu0101436784@ull.edu.es> 
-# @brief makefile para #Nombre_programa_final
+# @brief makefile para cripto
 # 
 
 CXX=g++
 CXXFLAGS=-g -std=c++14 -Wall -I.
-OBJ = #Fichero_main.o #Fichero_funciones.o
+OBJ = cripto.o funciones_cripto.o
 
-#Nombre_programa_final: $(OBJ)
+cripto: $(OBJ)
 	$(CXX) -o $@ $^
 
 .PHONY: clean
@@ -20,4 +20,4 @@ OBJ = #Fichero_main.o #Fichero_funciones.o
 
 clean:
 	rm *.o
-	rm #Nombre_programa_final
+	rm cripto
