@@ -5,18 +5,16 @@
  * 
  * @author Adriano dos Santos Moreira <alu0101436784@ull.edu.es> 
  * @brief Funciones para cripto.cc
- * 
- * 
-*/
+ */
 
 #include <cstdlib>
 #include <string>
 #include <iostream>
+#include <vector>
 #include "funciones_cripto.h"
 
 
 void Inicio (int argc, char* argv[]) {
-
   if (argc != 6) {
     if (argc == 2) {
       std::string entrada = argv[1];
@@ -43,3 +41,22 @@ void Inicio (int argc, char* argv[]) {
   }
 }
 
+void ComprobarRuta (const std::string& fichero_entrada,const std::string& fichero_salida) {
+  if (fichero_entrada == fichero_salida) {
+    std::cerr << "Los ficheros de entrada y salida no pueden tener el mismo nombre." << std::endl;
+    exit(EXIT_SUCCESS);
+  } else if (TieneCaracteresProhibidos(fichero_entrada) || TieneCaracteresProhibidos(fichero_salida)) {
+    std::cerr << "Uno o dos ficheros tienen caracteres no permitidos" << std::endl;
+    exit(EXIT_SUCCESS);
+  }
+}
+
+bool TieneCaracteresProhibidos(const std::string& nombre_fichero) {
+  const std::vector<char> kCaracteresProhibidos{'*', '.', '"', '\\', '[', ']', ':', ';', '|', ','};
+  for (auto i: kCaracteresProhibidos) {
+    if (nombre_fichero.find(i) != std::string::npos) {
+      return true;
+    }
+  }
+  return false;
+}
