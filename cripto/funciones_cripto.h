@@ -8,6 +8,7 @@
  */
 
 #include <string>
+#include <bitset>
 
 /**
  * Muestra mensajes en funcion de si el número de parámetros
@@ -20,8 +21,7 @@
 void Inicio (int argc, char* argv[]);
 
 /**
- * Sale del programa si el nombre de los ficheros son inapropiados
- * o si los nombres coinciden
+ * Sale del programa si los nombres coinciden
  * 
  * @param fichero_entrada Nombre del fichero de entrada
  * @param fichero_salida Nombre del fichero de salida
@@ -30,9 +30,19 @@ void Inicio (int argc, char* argv[]);
 void ComprobarRuta (const std::string& fichero_entrada,const std::string& fichero_salida);
 
 /**
- * Comprueba si el fichero contiene * . " \ [ ] : ; | ,
+ * Encripta una línea con el cifrado xor
  * 
- * @param nombre_fichero Nombre del fichero a analizar
- * @return 1 si hay caracteres prohibidos y 0 si no los hay
+ * @param linea La línea a encriptar
+ * @param pass Contraseña con la que encriptar
+ * @return La línea encriptada
  */
-bool TieneCaracteresProhibidos(const std::string& nombre_fichero);
+std::string CifradoXor (const std::string& linea, const std::string pass);
+
+/**
+ * Encripta una línea con el cifrado de César
+ * 
+ * @param linea La línea a encriptar
+ * @param pass Número de posiciones a mover por cada caracter
+ * @return La línea encriptada
+ */
+std::string CifradoCesar (const std::string& linea, const int& pass);
