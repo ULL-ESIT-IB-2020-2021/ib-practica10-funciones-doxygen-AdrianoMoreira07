@@ -31,6 +31,7 @@ int main (int argc, char* argv[]) {
   }
   std::string linea_entrada{"-1"};
   std::string linea_salida{"-2"};
+  int cantidad_lineas{0};
 
   std::string metodo_entrada{argv[3]};
   int metodo{std::stoi(metodo_entrada)};
@@ -39,6 +40,8 @@ int main (int argc, char* argv[]) {
   int clave_cesar{0};
 
   std::string operacion{argv[5]};
+
+  int cantidad_a{0};
   
   switch (metodo) {
   case 1: // Cifrado xor
@@ -46,6 +49,7 @@ int main (int argc, char* argv[]) {
       getline(fichero_entrada, linea_entrada);
       linea_salida = CifradoXor(linea_entrada, password);
       fichero_salida << linea_salida << '\n';
+      ++cantidad_lineas;
     }
     break;
   case 2: // Cifrado de César
@@ -63,6 +67,7 @@ int main (int argc, char* argv[]) {
       getline(fichero_entrada, linea_entrada);
       linea_salida = CifradoCesar(linea_entrada, clave_cesar);
       fichero_salida << linea_salida << '\n';
+      ++cantidad_lineas;
     }
     break;
   default:
@@ -70,6 +75,15 @@ int main (int argc, char* argv[]) {
     break;
   }
 
+fichero_entrada.close();
+std::ifstream fichero_entrada2{ruta_fichero_entrada};
+
+for (int i{0}; i <= cantidad_lineas; ++i) {
+  getline(fichero_entrada2, linea_entrada);
+  cantidad_a += CantidadA(linea_entrada);
+}
+
+  std::cout << "La cantidad de veces que aparece la 'a' es: " << cantidad_a << std::endl;
   std::cout << argv[0] << ": Ejecución satisfactoria" << std::endl;
 
   return 0;

@@ -106,3 +106,13 @@ std::string CifradoCesar (const std::string& linea, const int& pass) {
   }
   return linea_cifrada;
 }
+
+int CantidadA (std::string linea) {
+  int cantidad_final{0};
+  for (auto i: linea) {
+    if (i == 'a') {
+      ++cantidad_final;
+    }
+  }
+  return cantidad_final;
+}

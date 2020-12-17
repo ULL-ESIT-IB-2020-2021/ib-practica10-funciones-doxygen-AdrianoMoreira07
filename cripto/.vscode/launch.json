@@ -9,7 +9,7 @@
       "type": "cppdbg",
       "request": "launch",
       "program": "${fileDirname}/${fileBasenameNoExtension}",
-      "args": ["entrada.txt", "salida.txt", "1", "asdf", "+"],
+      "args": ["prueba.txt", "prueba2.txt", "1", "asdf", "+"],
       "stopAtEntry": true,
       "cwd": "${workspaceFolder}",
       "environment": [],

@@ -46,3 +46,11 @@ std::string CifradoXor (const std::string& linea, const std::string pass);
  * @return La línea encriptada
  */
 std::string CifradoCesar (const std::string& linea, const int& pass);
+
+/**
+ * Cuenta cuántas 'a' hay en una línea
+ * 
+ * @param linea La línea en la que va a contar las 'a'
+ * @return La cantidad de 'a'
+ */
+int CantidadA (std::string linea);
